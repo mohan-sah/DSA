@@ -12,16 +12,29 @@ class LinkedList:
         self.length = 1
 
     def append(self,value):
+
         new_node = Node(value)
+        # Edgecase: what if dict is empty. well in that case point head and tail to new node
+        if self.head is None:
+            self.head = new_node
         # link last Node of LL to new node
-        self.tail.next = new_node
+        else:self.tail.next = new_node
+        # and then tail (copy last link pointer)
         self.tail = new_node
+        self.length += 1
+        return True
+
+
+
+
+
 
 
 ll = LinkedList(5)
 ll.append(7)
 ll.append(9)
 print (ll.head.value,ll.head.next.value,ll.head.next.next.value, ll.tail.value)
+
 
 
 
