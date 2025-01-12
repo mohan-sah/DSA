@@ -25,6 +25,12 @@ class LinkedList:
         return True
 
 
+    def make_empty(self):
+        '''To check Edge case of append use this.'''
+        self.head = None
+        self.tail = None
+        self.length = 0
+
 
 
 
