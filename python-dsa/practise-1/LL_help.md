@@ -1,7 +1,7 @@
 # LL: Constructor
 
 ## Table of Contents
-
+ 
 *   [Node Class](#node-class)
 *   [LinkedList Class](#linked-list-class)
 *   [LL: Print List](#ll-print-list)
