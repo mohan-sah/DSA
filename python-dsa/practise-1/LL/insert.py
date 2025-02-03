@@ -5,7 +5,6 @@ class Node:
         self.next = None
 
 class LinkedList:
-
     def __init__(self,value):
         new_node = Node(value)
         self.head = new_node
@@ -33,17 +32,17 @@ class LinkedList:
             self.tail = None
             self.head = None
         else:
-            while temp:
+            while temp.next:
                 prev = temp
-                temp= temp.next
-
-            self.tail = prev.next
-            self.tail.next = None
+                temp = temp.next
+            self.tail = prev
+            temp.next = None
         self.length -= 1
         return temp
     def make_empty(self):
         self.head = None
         self.tail = None
+        self.length = 0
     def print_list(self):
         temp = self.head
         while temp :
@@ -90,57 +89,23 @@ class LinkedList:
         return True
 
     def insert(self,index,value):
-        if 0 >= index > self.length:
-            return None
+        if 0 > index > self.length:
+            return False
         if index == 0:
             return self.prepend(value)
-        if index == self.length -1:
+        if index == self.length :
             return self.append(value)
         prev = self.get(index-1)
         temp = Node(value)
-        after = prev.next
+        temp.next = prev.next
         prev.next = temp
-        temp.next = after
         self.length += 1
         return True
 
 
 
-## LL: Constructor
-my_linked_list = LinkedList(4)
-
-print('Head:', my_linked_list.head.value)
-print('Tail:', my_linked_list.tail.value)
-print('Length:', my_linked_list.length)
-
-
-
-"""
-    EXPECTED OUTPUT:
-    ----------------
-    Head: 4
-    Tail: 4
-    Length: 1"""
-
-## Print List
-
-my_linked_list = LinkedList(1)
-my_linked_list.append(2)
-my_linked_list.append(3)
-
-my_linked_list.print_list()
-
-"""
-    EXPECTED OUTPUT:
-    ----------------
-    1
-    2
-    3
-
-"""
-
 ## Append
-
+print("------------------------------------------------------------------------------")
 
 my_linked_list = LinkedList(1)
 my_linked_list.make_empty()
@@ -154,7 +119,7 @@ print('Length:', my_linked_list.length, '\n')
 
 print('Linked List:')
 my_linked_list.print_list()
-
+print("------------------------------------------------------------------------------")
 """
     EXPECTED OUTPUT:
     ----------------
@@ -169,50 +134,41 @@ my_linked_list.print_list()
 """
 
 ##LL: Pop
+print("------------------------------------------------------------------------------")
+my_linked_list = LinkedList(1)
+my_linked_list.make_empty()
+
+my_linked_list.append(1)
+my_linked_list.append(2)
+print('Head:', my_linked_list.head.value)
+print('Tail:', my_linked_list.tail.value)
+print('Length:', my_linked_list.length, '\n')
+
+print('Linked List:')
+my_linked_list.print_list()
+print(' pop:',my_linked_list.pop().value)
+print(' pop:',my_linked_list.pop().value)
 
 
-def check(expect, actual, message):
-    print(message)
-    print("EXPECTED:", expect)
-    print("RETURNED:", actual)
-    print("PASS" if expect == actual else "FAIL", "\n")
+"""
+    EXPECTED OUTPUT:
+    ----------------
+    Head: 1
+    Tail: 2
+    Length: 2 
+    
+    Linked List:
+    1
+    2
+     pop: 2
+     pop: 1
 
-print("\n----- Test: Pop on linked list with one node -----\n")
-linked_list = LinkedList(1)
-linked_list.print_list()
-popped_node = linked_list.pop()
-check(1, popped_node.value, "Value of popped node:")
-check(None, linked_list.head, "Head of linked list:")
-check(None, linked_list.tail, "Tail of linked list:")
-check(0, linked_list.length, "Length of linked list:")
+"""
 
-print("\n----- Test: Pop on linked list with multiple nodes -----\n")
-linked_list = LinkedList(1)
-linked_list.append(2)
-linked_list.append(3)
-linked_list.print_list()
-popped_node = linked_list.pop()
-check(3, popped_node.value, "Value of popped node:")
-check(1, linked_list.head.value, "Head of linked list:")
-check(2, linked_list.tail.value, "Tail of linked list:")
-check(2, linked_list.length, "Length of linked list:")
-
-print("\n----- Test: Pop on empty linked list -----\n")
-linked_list = LinkedList(1)
-linked_list.head = None
-linked_list.tail = None
-linked_list.length = 0
-popped_node = linked_list.pop()
-check(None, popped_node, "Popped node from empty linked list:")
-check(None, linked_list.head, "Head of linked list:")
-check(None, linked_list.tail, "Tail of linked list:")
-check(0, linked_list.length, "Length of linked list:")
-
-
-
+print("------------------------------------------------------------------------------")
 ##LL: Prepend
 
-
+print("------------------------------------------------------------------------------")
 my_linked_list = LinkedList(2)
 my_linked_list.append(3)
 
@@ -233,7 +189,7 @@ print('Tail:', my_linked_list.tail.value)
 print('Length:', my_linked_list.length, '\n')
 print('Linked List:')
 my_linked_list.print_list()
-
+print("------------------------------------------------------------------------------")
 """
     EXPECTED OUTPUT:
 
@@ -263,7 +219,8 @@ my_linked_list.print_list()
 
 ##LL: Pop First
 
-
+print("------------------------------------------------------------------------------")
+my_linked_list.make_empty()
 my_linked_list = LinkedList(2)
 my_linked_list.append(1)
 
@@ -275,7 +232,7 @@ print(my_linked_list.pop_first().value)
 # (0) Items - Returns None
 print(my_linked_list.pop_first())
 
-
+print("------------------------------------------------------------------------------")
 
 """
     EXPECTED OUTPUT:
@@ -286,26 +243,26 @@ print(my_linked_list.pop_first())
 
 """
 ##LL: Get
-
+print("------------------------------------------------------------------------------")
 
 my_linked_list = LinkedList(0)
 my_linked_list.append(1)
 my_linked_list.append(2)
 my_linked_list.append(3)
 
-print(my_linked_list.get(3).value)
-
+print("get() value 3 :",my_linked_list.get(3).value)
+print("------------------------------------------------------------------------------")
 
 
 """
     EXPECTED OUTPUT:
     ----------------
-    3
+    get() value 3 : 3
 
 """
 
 ##LL: Set
-
+print("------------------------------------------------------------------------------")
 my_linked_list = LinkedList(11)
 my_linked_list.append(3)
 my_linked_list.append(23)
@@ -318,7 +275,7 @@ my_linked_list.set_value(1,4)
 
 print('\nLL after set_value():')
 my_linked_list.print_list()
-
+print("------------------------------------------------------------------------------")
 
 
 """
@@ -340,7 +297,7 @@ my_linked_list.print_list()
 ## LL: Insert
 
 
-
+print("------------------------------------------------------------------------------")
 my_linked_list = LinkedList(1)
 my_linked_list.append(3)
 
@@ -365,7 +322,7 @@ my_linked_list.insert(4,4)
 
 print('\nLL after insert(4) at end:')
 my_linked_list.print_list()
-
+print("------------------------------------------------------------------------------")
 
 
 """
@@ -392,6 +349,103 @@ my_linked_list.print_list()
     2
     3
     4
+
+"""
+
+## LL: Remove
+
+
+print("------------------------------------------------------------------------------")
+my_linked_list = LinkedList(1)
+my_linked_list.append(2)
+my_linked_list.append(3)
+my_linked_list.append(4)
+my_linked_list.append(5)
+
+print('LL before remove():')
+my_linked_list.print_list()
+
+print('\nRemoved node:')
+print(my_linked_list.remove(2).value)
+print('LL after remove() in middle:')
+my_linked_list.print_list()
+
+print('\nRemoved node:')
+print(my_linked_list.remove(0).value)
+print('LL after remove() of first node:')
+my_linked_list.print_list()
+
+print('\nRemoved node:')
+print(my_linked_list.remove(2).value)
+print('LL after remove() of last node:')
+my_linked_list.print_list()
+print("------------------------------------------------------------------------------")
+
+
+"""
+    EXPECTED OUTPUT:
+    ----------------
+    LL before remove():
+    1
+    2
+    3
+    4
+    5
+
+    Removed node:
+    3
+    LL after remove() in middle:
+    1
+    2
+    4
+    5
+
+    Removed node:
+    1
+    LL after remove() of first node:
+    2
+    4
+    5
+
+    Removed node:
+    5
+    LL after remove() of last node:
+    2
+    4
+
+"""
+
+
+## LL : Reverse
+
+print("------------------------------------------------------------------------------")
+my_linked_list = LinkedList(1)
+my_linked_list.append(2)
+my_linked_list.append(3)
+my_linked_list.append(4)
+
+print('LL before reverse():')
+my_linked_list.print_list()
+
+my_linked_list.reverse()
+
+print('\nLL after reverse():')
+my_linked_list.print_list()
+print("------------------------------------------------------------------------------")
+"""
+    EXPECTED OUTPUT:
+    ----------------
+    LL before reverse():
+    1
+    2
+    3
+    4
+
+    LL after reverse():
+    4
+    3
+    2
+    1
 
 """
 
