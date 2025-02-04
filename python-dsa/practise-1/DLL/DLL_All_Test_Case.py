@@ -55,7 +55,8 @@ print(my_doubly_linked_list.pop())
 print("------------------------------------------------------------------------------")
 ## DLL: Prepend
 print("------------------------------------------------------------------------------")
-
+my_doubly_linked_list = DoublyLinkedList(2)
+my_doubly_linked_list.append(3)
 print('Before prepend():')
 print('----------------')
 print('Head:', my_doubly_linked_list.head.value)
