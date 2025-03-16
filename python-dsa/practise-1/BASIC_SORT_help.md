@@ -278,7 +278,6 @@ def radix_sort(arr):
 ---
 
 ## Bucket Sort <a name="bucket-sort"></a>
-
 Implement a `bucket_sort` function that sorts an array using the Bucket Sort algorithm. The method should:
 
 1. Divide the array into a number of buckets.
